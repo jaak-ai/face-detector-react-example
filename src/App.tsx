@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useRef } from 'react';
 import './App.css';
+import { defineCustomElements } from '@jaak.ai/video-camera/loader';
+import { defineCustomElements as defineFaceDetector } from '@jaak.ai/face-detector/loader';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const faceDetectorRef = useRef<any>(null);
+	useEffect(() => {
+		defineCustomElements(window);
+		defineFaceDetector(window);
+		if (faceDetectorRef.current) {
+			faceDetectorRef.current.config = {
+				width: '640px',
+				height: '480px',
+				enableMicrophone: true,
+				mode: 'video-camera',
+				placeholder: 'Upload your image',
+				buttonText: 'Upload File',
+				documentAccept: 'image/*',
+				description: 'Please upload an image for face detection',
+				size: 2048,
+				videoDuration: 5,
+			};
+		}
+	}, []);
+	return (
+		<div className="App">
+			<face-detector ref={faceDetectorRef}></face-detector>
+		</div>
+	);
 }
 
 export default App;
