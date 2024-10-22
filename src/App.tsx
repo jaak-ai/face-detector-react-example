@@ -21,6 +21,35 @@ function App() {
 				size: 2048,
 				videoDuration: 5,
 			};
+
+			//Añade los eventos que deseas escuchar como:
+			// * fileResult
+			// * status
+			// * componentError
+			// * faceDetectionMessage
+
+			// Obtención del elemento face-detector a través de la referencia
+			const faceDetector = faceDetectorRef.current;
+
+			// Escucha el evento fileResult
+			faceDetector.addEventListener('fileResult', (event: any) =>
+				console.log('Base64 ->', event.detail)
+			);
+
+			// Escucha otros eventos 👇
+
+			// faceDetector.addEventListener('status', (event: any) =>
+			// 	console.log('Status ->', event.detail)
+			// );
+
+			// faceDetector.addEventListener('componentError', (event: any) =>
+			// 	console.log('componentError ->', event.detail)
+			// );
+
+			// faceDetector.addEventListener('faceDetectionMessage', (event: any) =>
+			// 	console.log('faceDetectionMessage ->', event.detail)
+			// );
+
 		}
 	}, []);
 	return (
