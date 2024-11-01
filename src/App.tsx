@@ -61,13 +61,9 @@ function App() {
 				width: '640px',
 				height: '480px',
 				enableMicrophone: false,
-				mode: 'upload-file',
-				placeholder: 'Upload your image',
-				buttonText: 'Upload File',
-				documentAccept: 'image/*',
-				description: 'Please upload an image for face detection',
+				mode: 'video-camera', // Modo del componente
 				size: 2048,
-				videoDuration: 5,
+				documentDetect: true, // Habilita la detección de documentos
 			};
 
 			const documentDetector = documentDetectorRef.current;
