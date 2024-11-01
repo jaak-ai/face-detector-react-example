@@ -27,6 +27,11 @@ declare global {
 				React.HTMLAttributes<HTMLElement>,
 				HTMLElement
 			>;
+
+			'document-detector': React.DetailedHTMLProps<
+			React.HTMLAttributes<HTMLElement>,
+			HTMLElement
+		>;
 		}
 	}
 }
